@@ -1,0 +1,9 @@
+base-devel
+xorg
+xorg-xinit
+alacritty
+firefox
+xmonad
+xmonad-contrib
+dmenu
+xmobar
