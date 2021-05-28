@@ -1,6 +1,7 @@
 Config { font = "xft:monospace:pixelsize=14:antialias=true:hinting=true"
        , additionalFonts = []
-       , border = None
+       , border = FullB
+       , borderColor = "black"
        , bgColor = "#000000"
        , fgColor = "#ffebf7"
        , alpha = 255
@@ -15,7 +16,7 @@ Config { font = "xft:monospace:pixelsize=14:antialias=true:hinting=true"
        , allDesktops = True
        , overrideRedirect = True
        , commands = [ Run Cpu ["-L","3","-H","50",
-                               "--normal","green","--high","red"] 10
+                          "--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     ]
