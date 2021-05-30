@@ -23,5 +23,5 @@ Config { font = "xft:monospace:pixelsize=14:antialias=true:hinting=true"
 	, sepChar = "%"
 	, alignSep = "}{"
 	, template = "    %date% }\
-		     \{ %cput% | %memory%    "
+		     \{ %cpu% | %memory%    "
 	}
