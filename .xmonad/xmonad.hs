@@ -2,7 +2,7 @@ import XMonad
 import Data.Monoid
 import System.Exit
 import qualified XMonad.StackSet as W
-import qualified Data.Map	 as M
+import qualified Data.Map	       as M
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 import XMonad.Hooks.DynamicLog
@@ -16,8 +16,13 @@ _keys conf@(XConfig {XMonad.modMask = mm}) = M.fromList $
 	[ ((mm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf) 
 	, ((mm, xK_d), spawn "dmenu_run") 
 	, ((mm .|. shiftMask, xK_c), kill) 
-	, ((mm, xK_q), spawn "xmonad --recompile; xmonad --restart") ]
+	, ((mm, xK_q), spawn "xmonad --recompile; xmonad --restart")
+  ]
+  ++
 
+  [((m .|. mm, k), windows $ f i)
+      | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+      , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 --Mouse
 _mouseBindings (XConfig {XMonad.modMask = mm}) = M.fromList $
@@ -29,8 +34,9 @@ _mouseBindings (XConfig {XMonad.modMask = mm}) = M.fromList $
  
 --ManageHook
 _manageHook = composeAll
-	[ resource =? "desktop_window" 	--> doIgnore
-	, resource =? "kdesktop"	--> doIgnore ]
+	[ className =? "discord"        --> doFloat 
+  , resource =? "desktop_window" 	--> doIgnore
+	, resource =? "kdesktop"        --> doIgnore ]
 
 --Layout
 _layout = avoidStruts (Tall 1 (3/100) (1/2) ||| Full)
