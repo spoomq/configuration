@@ -13,6 +13,6 @@ set hlsearch
 set noswapfile
 set noundofile
 set nobackup
-set list listchars=tab:»·,trail:»
+" set list listchars=tab:»·,trail:»
 set backspace=indent,eol,start
 highlight Comment ctermfg=green
