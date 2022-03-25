@@ -16,7 +16,7 @@ cd yay-git && makepkg -si
 cd -
 
 echo "Installing AUR Packages..."
-yay -S picom-jonaburg-git\
+yay -S --noconfirm picom-jonaburg-git\
   alacritty\
   xclip
 
@@ -45,12 +45,12 @@ else
 fi
 
 # Xmonad
-if [ -d ~/xmonad ]; then
+if [ -d ~/.xmonad ]; then
   echo "Backing Up xmonad config..."
-  mkdir ~/xmonad-old && mv ~/xmonad/* ~/xmonad-old/;
+  mkdir ~/.xmonad-old && mv ~/.xmonad/* ~/.xmonad-old/;
 else
   echo "Installing xmonad config..."
-  cp -r ./xmonad/* ~/xmonad/;
+  cp -r ./.xmonad/* ~/.xmonad/;
 fi
 
 
