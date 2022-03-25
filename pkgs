@@ -1,11 +1,12 @@
 base-devel
+nvidia
 xorg
 xorg-xinit
 xmonad
 xmonad-contrib
-dmenu
 xmobar
-alacritty
+dmenu
+nitrogen
 firefox
 tmux
 ranger
