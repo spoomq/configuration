@@ -12,17 +12,19 @@ sudo pacman -S --noconfirm --needed - < pkgs
 echo "Installing Yay..."
 # Yay
 git clone https://aur.archlinux.org/yay-git.git
-cd yay-git && makepkg -si
+cd ./yay-git && makepkg -si
 cd -
+mkdir -p ~/.pkgs && mv ./yay-git ~/.pkgs
 
 echo "Installing AUR Packages..."
-yay -S --noconfirm picom-jonaburg-git\
+yes | yay -S --noconfirm picom-jonaburg-git\
   alacritty\
   xclip
 
 # Bash
 echo "Replacing .bashrc..."
-mv -f ./.bashrc ~/
+rm -f ~/.bashrc
+cp ./.bashrc ~
 
 # Vim
 if [ -f ~/.vimrc ]; then
@@ -47,10 +49,10 @@ fi
 # Xmonad
 if [ -d ~/.xmonad ]; then
   echo "Backing Up xmonad config..."
-  mkdir ~/.xmonad-old && mv ~/.xmonad/* ~/.xmonad-old/;
+  mkdir ~/.xmonad-old && mv ~/.xmonad/* ~/.xmonad-old;
 else
   echo "Installing xmonad config..."
-  cp -r ./.xmonad/* ~/.xmonad/;
+  mkdir -p ~/.xmonad && cp ./.xmonad/xmonad.hs ~/.xmonad;
 fi
 
 
@@ -80,16 +82,16 @@ mkdir -p ~/.config/
   if [ -d ~/.config/xmobar ]; then
     echo "Backing Up exisiting xmobar config..."
     mv ~/.config/xmobar/.xmobarrc ~/.config/xmobar/.xmobarrc.old;
-    cp ./.config/xmobar/* ~/.config/xmobar/;
+    cp ./.config/xmobar/.xmobarrc ~/.config/xmobar;
   else
     echo "Installing xmobar config..."
-    mkdir -p ~/.config/xmobar/ && cp ./.config/xmobar/* ~/.config/xmobar/;
+    mkdir -p ~/.config/xmobar && cp ./.config/xmobar/.xmobarrc ~/.config/xmobar;
   fi
 
 # Fonts
 # echo "Installing Fonts..."
 # mkdir -p ~/.local/share/fonts
-# cp -r ./.fonts/* ~/.local/share/fonts/
+# cp -r ./.fonts/* ~/.local/share/fonts
 # fc-cache -f
 
 sleep 3
