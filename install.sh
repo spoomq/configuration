@@ -1,4 +1,9 @@
 #!/bin/bash
+#
+# This needs to be updated. Install bspwm, sxhkd, polybar and etc.
+#
+#
+
 set -e
 
 sleep 3
