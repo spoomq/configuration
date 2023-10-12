@@ -2,10 +2,11 @@ alias ls='ls -lah --color=auto'
 alias mv='mv -i'
 alias rm='rm -i'
 
-alias update='sudo pacman -Syu'
-alias install='sudo pacman -S'
-alias remove='sudo pacman -R'
-alias autoremove='sudo pacman -Rs $(pacman -Qtdq)'
+alias update='sudo apt update && sudo apt upgrade -y'
+alias install='sudo apt install'
+alias remove='sudo apt remove'
+alias download='sudo dpkg --install'
+alias off='sudo apt update && sudo apt upgrade -y && shutdown now'
 
 alias ..='cd ..'
 shopt -s autocd
