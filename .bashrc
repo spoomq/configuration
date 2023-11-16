@@ -1,4 +1,4 @@
-alias ls='ls -lah --color=auto'
+alias ls='echo && ls -arh --color=auto'
 alias mv='mv -i'
 alias rm='rm -i'
 
