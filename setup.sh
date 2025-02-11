@@ -17,6 +17,8 @@ sudo snap install chromium spotify
 echo -e "installing alacritty..."
 sudo add-apt-repository ppa:aslatter/ppa -y
 sudo apt install alacritty -y
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
 
 echo -e "remove packages..."
 sudo apt remove gnome-shell-extension-ubuntu-dock gnome-terminal -y
@@ -41,24 +43,22 @@ cp ./.tmux.conf ~/.tmux.conf;
 sleep 1
 echo -e "moving alacritty config...\n"
 mkdir ~/.config/alacritty
-cp ./.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml;
+cp ./alacritty/alacritty.toml ~/.config/alacritty/;
 
 # backgrounds
-echo -e "moving backgrounds...\n"
-cp ./backgrounds/* ~/.local/share/backgrounds/
+# echo -e "moving backgrounds...\n"
+# mkdir ~/.local/share/backgrounds
+# cp ./backgrounds/* ~/.local/share/backgrounds/
 
 # system
 echo -e "changing background...\n"
-gsettings set org.gnome.desktop.background picture-uri file:///home/user/.local/share/backgrounds/horse.png
+gsettings set org.gnome.desktop.background picture-uri ''
+gsettings set org.gnome.desktop.background primary-color '#000000'
 
 sleep 1
-echo -e "changing theme...\n"
-gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-dark'
-
-sleep 2
 echo -e "done.\n"
 
-read -p "would you like to reboot?" -n 1 -r
+read -p "\nwould you like to reboot? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   reboot
