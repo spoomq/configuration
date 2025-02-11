@@ -43,7 +43,7 @@ cp ./.tmux.conf ~/.tmux.conf;
 sleep 1
 echo -e "moving alacritty config...\n"
 mkdir ~/.config/alacritty
-cp ./alacritty/alacritty.toml ~/.config/alacritty/;
+cp ./alacritty.toml ~/.config/alacritty/;
 
 # backgrounds
 # echo -e "moving backgrounds...\n"
