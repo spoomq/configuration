@@ -21,13 +21,14 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source ~/.cargo/env
 rustup override set stable
 rustup update stable
-sudo apt install cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+sudo apt install cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 -y
 cargo build --release
+echo -e "installing alacritty desktop..."
 sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
 sudo cp ./target/release/alacritty /usr/bin/
-#sudo cp ./extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
-#sudo cp ./extra/linux/Alacritty.desktop /usr/share/applications
-#sudo update-desktop-database
+sudo cp ./extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+sudo cp ./extra/linux/Alacritty.desktop /usr/share/applications
+sudo update-desktop-database
 rustup self uninstall
 cd - && pwd
 sudo update-alternatives --set x-terminal-emulator /usr/bin/alacritty
@@ -58,6 +59,12 @@ echo -e "moving alacritty config...\n"
 mkdir -p ~/.config/alacritty/themes
 cp ./alacritty.toml ~/.config/alacritty/;
 git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
+# node install after .bashrc replace
+echo -e "installing node via nvm..."
+wget -q -O- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+source ~/.bashrc
+nvm install --lts
 
 # backgrounds
 # echo -e "moving backgrounds...\n"
