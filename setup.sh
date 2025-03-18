@@ -12,16 +12,17 @@ sudo apt install build-essential curl vim git net-tools gnome-tweaks neofetch cm
 
 echo -e "removing & installing snap packages..."
 sudo snap remove --purge firefox
-sudo snap install chromium spotify
+sudo snap install chromium spotify 
+sudo snap install obsidian --classic
 
 echo -e "installing alacritty..."
-git clone https://github.com/alacritty/alacritty.git
-cd alacritty && pwd
+git clone https://github.com/alacritty/alacritty.git ~/Downloads/
+cd ~/Downloads/alacritty && pwd
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source ~/.cargo/env
 rustup override set stable
 rustup update stable
-sudo apt install cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 -y
+sudo apt install cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 libegl1-mesa-dev -y
 cargo build --release
 echo -e "installing alacritty desktop..."
 sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
@@ -30,7 +31,7 @@ sudo cp ./extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
 sudo cp ./extra/linux/Alacritty.desktop /usr/share/applications
 sudo update-desktop-database
 rustup self uninstall
-cd - && pwd
+cd -
 sudo update-alternatives --set x-terminal-emulator /usr/bin/alacritty
 echo -e "alacritty done."
 
