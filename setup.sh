@@ -16,7 +16,7 @@ sudo snap install chromium spotify
 sudo snap install obsidian --classic
 
 echo -e "installing alacritty..."
-git clone https://github.com/alacritty/alacritty.git ~/Downloads/
+git clone https://github.com/alacritty/alacritty.git ~/Downloads/alacritty
 cd ~/Downloads/alacritty && pwd
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source ~/.cargo/env
@@ -68,19 +68,19 @@ source ~/.bashrc
 nvm install --lts
 
 # backgrounds
-# echo -e "moving backgrounds...\n"
-# mkdir ~/.local/share/backgrounds
-# cp ./backgrounds/* ~/.local/share/backgrounds/
+echo -e "moving backgrounds...\n"
+mkdir -p ~/.local/share/backgrounds
+cp ./windmills.png ~/.local/share/backgrounds/
 
 # system
-echo -e "changing background...\n"
-gsettings set org.gnome.desktop.background picture-uri ''
-gsettings set org.gnome.desktop.background primary-color '#000000'
+# echo -e "changing background...\n"
+# gsettings set org.gnome.desktop.background picture-uri ''
+# gsettings set org.gnome.desktop.background primary-color '#000000'
 
 sleep 1
 echo -e "done.\n"
 
-read -p "\nwould you like to reboot? " -n 1 -r
+read -p "would you like to reboot? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   reboot
